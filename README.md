@@ -19,7 +19,7 @@ OpenClaw skill för Willys – hämtar kundvagn, orderhistorik, produktsök, lev
 Sätt dina inloggningsuppgifter innan du kör. Willys använder personnummer som användarnamn:
 
 ```bash
-export WILLYS_EMAIL=197912060097
+export WILLYS_EMAIL=DITT_PERSONNUMMER
 export WILLYS_PASSWORD=ditt-lösenord
 export WILLYS_POSTAL_CODE=11234   # valfritt, krävs för leveranstider
 ```
