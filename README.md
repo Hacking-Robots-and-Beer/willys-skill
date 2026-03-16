@@ -113,8 +113,12 @@ kubectl cp skills/willys/local/. openclaw-zoe-0:/root/.local -n openclaw-zoe
 
 Se `skills/willys/local/README.md` för mer detaljer.
 
-## Säkerhet
+## Säkerhet & begränsningar
 
-- **Read-only** – skillet gör inga ändringar, lägger inte till i vagnen och beställer ingenting.
+- **Read-only** – skillet läser enbart data och gör inga ändringar.
 - **Inga credentials i output** – användarnamn och lösenord skrivs aldrig ut i svar eller loggar.
 - Credentials läses enbart från miljövariabler, aldrig från filer eller argument.
+
+### Varför kan man inte lägga till varor?
+
+Willys blockerar skriv-operationer (lägg i vagn, beställ) från icke-browserbaserade sessioner på servernivå — `POST /axfood/rest/cart/addProducts` returnerar HTTP 500 oavsett korrekt request-format, CSRF-token, leveranssätt och slot. Läs-operationer fungerar utan problem. För att lägga till varor krävs en riktig browsersession via Puppeteer eller Playwright (samma anledning till att [willys-mcp](https://github.com/jimmystridh/willys-mcp) använder Puppeteer).

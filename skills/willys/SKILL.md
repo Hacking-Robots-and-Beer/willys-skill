@@ -122,7 +122,7 @@ Total: 64.80 kr  (3 items)
 
 ## Guardrails
 
-- **Read-only** — this skill never modifies cart contents, places orders, or changes account data.
+- **Read-only** — this skill only reads data. Cart mutations (add/remove items, place orders) are not supported because Willys blocks write operations from non-browser sessions at the server level — the API returns HTTP 500 for all add-to-cart attempts regardless of correct request format. A real browser session (Puppeteer/Playwright) would be required for write operations.
 - **No credential leakage** — never echo, log, or include credentials in the chat summary.
 - **No fabrication** — if a field is missing or empty, say so. Never invent product or order data.
 - **Single source of truth** — all data comes directly from the scraper output. Do not supplement with guesses.
